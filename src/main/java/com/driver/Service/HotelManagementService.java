@@ -16,6 +16,7 @@ public class HotelManagementService {
     HotelManagementRepository hotelManagementRepository = new HotelManagementRepository();
 
     public String addHotel(Hotel hotel) {
+
         return hotelManagementRepository.addHotel(hotel);
     }
 
