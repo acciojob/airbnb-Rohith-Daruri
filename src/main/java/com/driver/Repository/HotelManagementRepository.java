@@ -18,35 +18,38 @@ public class HotelManagementRepository {
     HashMap<String,Booking>bookingHashMap = new HashMap<>();
 
     public String addHotel(Hotel hotel) {
-        String s = "";
-        if(hotel.getHotelName().equals(s) || hotelHashMap.containsKey(hotel.getHotelName())){
+        if(hotel.getHotelName().equals("")){
+            return "FAILURE";
+        }
+        if(hotelHashMap.containsKey(hotel.getHotelName())){
             return "FAILURE";
         }
         hotelHashMap.put(hotel.getHotelName(),hotel);
         return "SUCCESS";
+
     }
 
     public Integer addUser(User user) {
-        userHashMap.put(user.getaadharCardNo(),user);
-        Integer ans = user.getaadharCardNo();
-        return ans;
+        if(userHashMap.containsKey(user.getaadharCardNo())==false) {
+            userHashMap.put(user.getaadharCardNo(), user);
+            Integer ans = user.getaadharCardNo();
+            return ans;
+        }
+        return 0;
     }
 
     public String gethotelfacility() {
         int facility = 0;
-        String result = "";
-      for(String name:hotelHashMap.keySet()){
-          Hotel h = hotelHashMap.get(name);
-          if(h.getFacilities().size()>facility){
-              result = h.getHotelName();
-              facility = h.getFacilities().size();
-          }
-
-      }
-      if(facility==0){
-          return "";
-      }
-      return result;
+        String  result = "";
+        for(String hotel:hotelHashMap.keySet()){
+            Hotel h = hotelHashMap.get(hotel);
+            List<Facility> f = h.getFacilities();
+            if(f.size()>facility){
+                facility = f.size();
+                result = hotel;
+            }
+        }
+     return result;
     }
 
     public Integer bookroom(Booking booking) {
@@ -54,7 +57,8 @@ public class HotelManagementRepository {
         int rooms = booking.getNoOfRooms();
         String hotel = booking.getHotelName();
         if(hotelHashMap.containsKey(hotel)){
-            int available_rooms = hotelHashMap.get(hotel).getAvailableRooms();
+            Hotel h = hotelHashMap.get(hotel);
+            int available_rooms = h.getAvailableRooms();
             if(rooms==available_rooms){
                 int value = booking.getNoOfRooms()*hotelHashMap.get(hotel).getPricePerNight();
                 booking.setAmountToBePaid(value);
