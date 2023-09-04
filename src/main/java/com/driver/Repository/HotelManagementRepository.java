@@ -1,4 +1,4 @@
-package com.driver;
+package com.driver.Repository;
 
 import com.driver.model.Booking;
 import com.driver.model.Facility;

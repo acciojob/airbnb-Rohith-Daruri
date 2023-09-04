@@ -1,5 +1,6 @@
-package com.driver;
+package com.driver.Service;
 
+import com.driver.Repository.HotelManagementRepository;
 import com.driver.model.Booking;
 import com.driver.model.Facility;
 import com.driver.model.Hotel;
