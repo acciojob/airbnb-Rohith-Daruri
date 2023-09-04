@@ -18,7 +18,7 @@ public class HotelManagementRepository {
     HashMap<String,Booking>bookingHashMap = new HashMap<>();
 
     public String addHotel(Hotel hotel) {
-        if(hotel.getHotelName().equals(null)){
+        if(hotel.getHotelName().length()==0){
             return "FAILURE";
         }
         if(hotelHashMap.containsKey(hotel.getHotelName())){
