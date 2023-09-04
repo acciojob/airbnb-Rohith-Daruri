@@ -59,7 +59,7 @@ public class HotelManagementRepository {
         if(hotelHashMap.containsKey(hotel)){
             Hotel h = hotelHashMap.get(hotel);
             int available_rooms = h.getAvailableRooms();
-            if(rooms==available_rooms){
+            if(rooms<=available_rooms){
                 int value = booking.getNoOfRooms()*hotelHashMap.get(hotel).getPricePerNight();
                 booking.setAmountToBePaid(value);
                 bookingHashMap.put(booking.getBookingId(),booking);
