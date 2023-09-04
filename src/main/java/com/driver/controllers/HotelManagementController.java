@@ -32,10 +32,7 @@ public class HotelManagementController {
         //incase the hotelName is null or the hotel Object is null return an empty a FAILURE
         //Incase somebody is trying to add the duplicate hotelName return FAILURE
         //in all other cases return SUCCESS after successfully adding the hotel to the hotelDb.
-        if(hotel!=null) {
-            return hotelManagementService.addHotel(hotel);
-        }
-        return null;
+       hotelManagementService.addHotel(hotel);
 
 
     }
