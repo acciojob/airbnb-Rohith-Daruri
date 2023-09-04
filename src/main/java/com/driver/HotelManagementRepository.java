@@ -14,11 +14,11 @@ import java.util.UUID;
 @Repository
 public class HotelManagementRepository {
     TreeMap<String, Hotel> hotelHashMap = new TreeMap<>();
-    HashMap<String, User> userHashMap = new HashMap<>();
+    HashMap<Integer, User> userHashMap = new HashMap<>();
     HashMap<String,Booking>bookingHashMap = new HashMap<>();
 
     public String addHotel(Hotel hotel) {
-        if(hotel==null || hotel.getHotelName().equals("") || hotelHashMap.containsKey(hotel.getHotelName())){
+        if(hotel.getHotelName().equals("") || hotelHashMap.containsKey(hotel.getHotelName())){
             return "FAILURE";
         }
         hotelHashMap.put(hotel.getHotelName(),hotel);
@@ -26,8 +26,9 @@ public class HotelManagementRepository {
     }
 
     public Integer addUser(User user) {
-        userHashMap.put(user.getName(),user);
-        return user.getaadharCardNo();
+        userHashMap.put(user.getaadharCardNo(),user);
+        Integer ans = user.getaadharCardNo();
+        return ans;
     }
 
     public String gethotelfacility() {

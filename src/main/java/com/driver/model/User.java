@@ -8,6 +8,7 @@ public class User {
 
     public User(int aadharCardNo, String name, int age) {
         this.aadharCardNo = aadharCardNo;
+        System.out.println(this.aadharCardNo);
         this.name = name;
         this.age = age;
     }
